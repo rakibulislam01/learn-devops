@@ -47,9 +47,14 @@ Running nginx container:
     
 **Port mapping:**
 
+Port forwarding, sometimes called port mapping, allows computers or services in private networks to connect 
+over the internet with other public or private computers or services.
+
+**Install net tools:**
+
     sudo apt install net-tools      # install network tools
 
-**Show network interface:**
+**Show instance network interface:**
 
     sudo ip addr        # ip addr or ifconfig       # command
     
@@ -171,8 +176,9 @@ the IP address and send the destination container.
     apt install tcpdump
     apt install iputils-ping
     arp     # show arp table
+    apt install traceroute
 
-Using `ifconfig` we can see the interfaces.
+Using `ifconfig` we can see the container interfaces.
 
     # ifconfig
     eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
@@ -193,6 +199,8 @@ Using `ifconfig` we can see the interfaces.
 
 The `nginx` container use eth0. `eth0` ip address `172.17.0.2`
 
+### Ingress Packet flow
+
 Now we check our incoming packets using `tcpdump`. First `ping` nginx server.
 
     ping 172.17.0.2     # command
@@ -209,6 +217,8 @@ Now we check our incoming packets using `tcpdump`. First `ping` nginx server.
 
 > Instance sending packets using default gateway (ip-172-17-0-1.ap-south-1.compute.internal). 
 
+### Egress Packet Flow
+
 **Ping outside from docker container:**
 
     # ping 8.8.8.8
@@ -220,22 +230,33 @@ Now we check our incoming packets using `tcpdump`. First `ping` nginx server.
 
     container network interface -> docker0 -> host network interface eth0(default gateway | host root namespace) -> outside world
 
-**Routing table:**
+Now we see the packet travel route using `taraceroute` (trace the path's data packets take from 
+their source to their destinations)
 
-    ubuntu@ip-172-31-9-131:~$ route
-    Kernel IP routing table
-    Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
-    default         ip-172-31-0-1.a 0.0.0.0         UG    100    0        0 eth0
-    172.17.0.0      0.0.0.0         255.255.0.0     U     0      0        0 docker0
-    172.31.0.0      0.0.0.0         255.255.240.0   U     0      0        0 eth0
-    ip-172-31-0-1.a 0.0.0.0         255.255.255.255 UH    100    0        0 eth0
+    traceroute 8.8.8.8      # command
+
+    # output
+    traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
+     1  ip-172-17-0-1.ap-south-1.compute.internal (172.17.0.1)  0.040 ms  0.024 ms  0.008 ms
+     2  ec2-52-66-0-243.ap-south-1.compute.amazonaws.com (52.66.0.243)  7.333 ms ec2-52-66-0-239.ap-south-1.compute.amazonaws.com (52.66.0.239)  3.180 ms ec2-52-66-0-247.ap-south-1.compute.amazonaws.com (52.66.0.247)  7.492 ms
+     3  100.65.19.176 (100.65.19.176)  2.990 ms *  2.940 ms
+     4  * * 100.66.8.150 (100.66.8.150)  3.380 ms
+     5  100.66.10.198 (100.66.10.198)  4.679 ms 100.66.11.196 (100.66.11.196)  4.429 ms 100.66.11.132 (100.66.11.132)  0.627 ms
+     6  100.66.6.5 (100.66.6.5)  6.714 ms 100.66.7.227 (100.66.7.227)  7.668 ms *
+     7  100.66.4.85 (100.66.4.85)  5.850 ms 100.66.4.113 (100.66.4.113)  6.813 ms 100.66.4.41 (100.66.4.41)  5.880 ms
+     8  100.65.10.65 (100.65.10.65)  0.387 ms 100.65.8.65 (100.65.8.65)  0.365 ms 100.65.10.33 (100.65.10.33)  1.397 ms
+     9  99.83.76.141 (99.83.76.141)  1.657 ms 52.95.65.144 (52.95.65.144)  1.564 ms 99.83.76.115 (99.83.76.115)  2.361 ms
+    10  99.83.76.100 (99.83.76.100)  2.481 ms 52.95.66.108 (52.95.66.108)  1.782 ms 99.83.76.132 (99.83.76.132)  2.859 ms
+    11  52.95.66.71 (52.95.66.71)  1.519 ms 52.95.66.183 (52.95.66.183)  1.597 ms 52.95.66.139 (52.95.66.139)  1.649 ms
+    12  99.82.180.91 (99.82.180.91)  1.790 ms 99.82.178.53 (99.82.178.53)  1.830 ms  1.814 ms
+    13  * * *
+    14  dns.google (8.8.8.8)  1.720 ms  2.132 ms  1.687 ms
+    # 
 
 ### Why ip address changed for outside request from container.
 
 ---
 .....
-
-Egress and Ingress flow
 
 ###  Veth pair:
 
