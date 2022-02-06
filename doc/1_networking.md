@@ -1,8 +1,6 @@
 # DevOps 
 
 --------
-> **OS: Ubuntu 20.4**
-> 
 ## Responsibility: 
 DevOps work will be very smooth so that everyone feel there are no DevOps engineers in this company.
 
@@ -25,6 +23,9 @@ Networking is the most important part of DevOps. If you understand the networkin
 12. Traceroute
 13. Private IP vs Public IP
 14. CIDR
+
+> **OS: Ubuntu 20.4**
+> 
 ----
 ### Ifconfig
 
