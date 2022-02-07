@@ -35,9 +35,15 @@ Run the following command:
 ### Docker:
 
 ---
-**Docker image:** zip File.
+**Docker image:** 
+>A Docker image is a read-only template that contains a set of instructions for creating a container 
+that can run on the Docker platform. It provides a convenient way to package up applications and preconfigured server 
+environments, which you can use for your own private use or share publicly with other Docker users.
 
-**Docker container:** Isolation environment.
+**Docker container:** 
+> A Docker container is an open source software development platform. Its main benefit is to package applications in 
+containers, allowing them to be portable to any system running a Linux or Windows operating system (OS). A Windows 
+machine can run Linux containers by using a virtual machine (VM) (`Isolation environment`).
 
 Running nginx container:
 
@@ -278,8 +284,18 @@ Nginx uses.
 ### Load balancer:
 
 ---
-1. Layer 4
-2. Layer 7
+1. **Layer 4**: 
+Layer 4 load balancing, operating at the transport level, manages traffic based on network information such as 
+application ports and protocols without visibility into the actual content of messages. This is an effective approach 
+for simple packet-level load balancing.
 
-### MTU (maximum transfer unit):
-......
+2. **Layer 7**: 
+Layer 7 load balancing operates at the application level, using protocols such as HTTP and SMTP to make decisions based 
+on the actual content of each message. Instead of merely forwarding traffic unread, a layer 7 load balancer terminates 
+network traffic, performs decryption as needed, inspects messages, makes content-based routing decisions, initiates a 
+new TCP connection to the appropriate upstream server, and writes the request to the server.
+
+### MTU (Maximum transmission unit):
+The maximum transmission unit (MTU) setting determines the largest packet size that can be transmitted through your 
+network. MTU is configured on the veth attached to each workload, and tunnel devices (if you enable IP in IP, VXLAN, 
+or WireGuard).
