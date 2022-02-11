@@ -296,6 +296,8 @@ network traffic, performs decryption as needed, inspects messages, makes content
 new TCP connection to the appropriate upstream server, and writes the request to the server.
 
 ### MTU (Maximum transmission unit):
+
+---
 The maximum transmission unit (MTU) setting determines the largest packet size that can be transmitted through your 
 network. MTU is configured on the veth attached to each workload, and tunnel devices (if you enable IP in IP, VXLAN, 
 or WireGuard).
