@@ -26,6 +26,7 @@ destination IP address. It provides essential data need to transmit the data. [F
 
 This showed some HTTPS traffic, with a hex display visible on the right portion of the output (alas, it’s encrypted). 
 Just remember—when in doubt, run the command above with the port you’re interested in, and you should be on your way.
+
 ---
 ### 4. For everything on an interface, what is the command?
     tcpdump -i eth0
@@ -103,6 +104,7 @@ Here we’re writing to a file called capture_file using the `-w switch`.
 
 You can read PCAP files by using the `-r switch`. Note that you can use all the regular commands within tcpdump while 
 reading in a file; you’re only limited by the fact that you can’t capture and process what doesn't exist in the file already.
+
 ---
 
 ### 18. What is the tcpdump command while reading in a file?
