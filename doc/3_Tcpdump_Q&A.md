@@ -361,7 +361,7 @@ fun filter to find packets where it’s been toggled.
 
 Here’s a fun filter to find packets where it’s been toggled.
     
-        tcpdump 'ip[6] & 128 != 0'
+    tcpdump 'ip[6] & 128 != 0'
 
 ---
 
@@ -369,6 +369,7 @@ Here’s a fun filter to find packets where it’s been toggled.
 ### References:
 
 1. https://nanxiao.github.io/tcpdump-little-book/
-2. https://www.youtube.com/watch?v=hWc-ddF5g1I
-3. https://www.geeksforgeeks.org/grep-command-in-unixlinux/
-4. https://www.youtube.com/watch?v=3uhA8bdz8gI
+2. https://andreafortuna.org/2018/07/18/tcpdump-a-simple-cheatsheet/
+3. https://www.youtube.com/watch?v=hWc-ddF5g1I
+4. https://www.geeksforgeeks.org/grep-command-in-unixlinux/
+5. https://www.youtube.com/watch?v=3uhA8bdz8gI
