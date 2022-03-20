@@ -35,6 +35,11 @@ Run the following command:
 ### Docker:
 
 ---
+
+**Docker**
+> Docker is an OS-level virtualization software platform that enables developers and IT administrators to creat, deploy 
+> and run applications in a docker container with all their dependencies.
+
 **Docker image:** 
 >A Docker image is a read-only template that contains a set of instructions for creating a container 
 that can run on the Docker platform. It provides a convenient way to package up applications and preconfigured server 
