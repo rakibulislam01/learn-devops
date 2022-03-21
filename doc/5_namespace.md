@@ -435,7 +435,3 @@ Congratulation! We have configured both Ingress and Egress Traffic successfully.
 9. https://www.ibm.com/support/pages/using-tcpdump-verify-icmp-polling
 10. https://medium.com/skilluped/what-is-iptables-and-how-to-use-it-781818422e52
 11. https://www.quora.com/Why-can-we-not-access-the-Internet-through-a-private-IP
-
-
-
-

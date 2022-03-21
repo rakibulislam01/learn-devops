@@ -102,4 +102,17 @@
     curl wbs2       # from wbs1
 
 Now it's working.
+
+### Nslookup:
+`nslookup` is a network administration command-line tool for querying the Domain Name System to obtain the mapping between 
+domain name and IP address, or other DNS records.
+
+    apt install dnsutils        # install nslookup
     
+    nslookup wbs1       # command
+    Server:		127.0.0.11
+    Address:	127.0.0.11#53
+    
+    Non-authoritative answer:
+    Name:	webserver1
+    Address: 172.19.0.2
