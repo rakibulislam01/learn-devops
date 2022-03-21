@@ -1,4 +1,4 @@
-# DevOps
+# Ds
 
 1. [Basic networking](doc/1_networking.md)
 2. [Docker networking](doc/2_docker_networking.md)
@@ -10,5 +10,5 @@
 8. ...
 9. ....
 10. [Docker_compose/ networking](doc/10_docker_compose_1.md)
-11. 
+11. [Docker_compose2](doc/11_docker_compose_2.md)
 

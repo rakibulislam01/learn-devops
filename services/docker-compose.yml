@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  lb:
+    build: lb
+    ports:
+      - "8000:80"
+  web1:
+    build: services1
+#    ports:
+#      - "8001:5000"
+  web2:
+    build: services2
+#    ports:
+#      - "8002:5000"
+  redis:
+    image: "redis:alpine"
