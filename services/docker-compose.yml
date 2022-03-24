@@ -12,5 +12,7 @@ services:
     build: services2
 #    ports:
 #      - "8002:5000"
+  web3:
+    build: services3
   redis:
     image: "redis:alpine"
